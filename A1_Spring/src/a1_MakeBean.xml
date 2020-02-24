@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+  <!-- 一、创建Bean的两种规则 -->
+  <!-- 1.1 ApplicationContext立即创建 -->
+  <bean id="person" class="A1_MakeBean.Person">
+    <property name="name" value="张三"/>
+  </bean>
+
+
+  <!--  二、创建Bean三种方式 -->
+
+  <!-- 2.2 静态工厂 factory-method工厂方法 -->
+  <bean id="tom" class="A1_MakeBean.StaticFactory" factory-method="getPerson"/>
+
+
+  <!-- 2.3 FactoryBean -->
+  <bean id="jerry" class="A1_MakeBean.TestFactoryBean"/>
+</beans>

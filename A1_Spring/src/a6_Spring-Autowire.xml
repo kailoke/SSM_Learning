@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+  <!-- 自动装配:对象类型 -->
+  <bean id="car" class="A6_Autowire.Car">
+    <property name="brand" value="高尔夫"/>
+    <property name="price" value="180000"/>
+  </bean>
+  <bean id="addr1" class="A6_Autowire.Address">
+    <property name="province" value="四川"/>
+    <property name="city" value="成都"/>
+  </bean>
+
+
+  <bean id="tom1" class="A6_Autowire.Person" autowire="byName">
+    <property name="name" value="tom"/>
+  </bean>
+  <bean id="tom2" class="A6_Autowire.Person" autowire="byType">
+    <property name="name" value="tom"/>
+  </bean>
+</beans>
