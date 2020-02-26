@@ -10,16 +10,20 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import java.util.List;
 
 /**
- * JdbcTemplate使用步骤
- *
- * 结果集包装接口 RowMapper
- *  实现类:
+ * JdbcTemplate
+ *  > update    增删改
+ *  > query     查
+ *      > RowMapper接口实现类，作用和ResultHandler相同。内部建立容器存储结果
+ *  > queryForObject
+ *      > 形参 Class<? extends Object> requiredType 传入返回类型
+ *  > queryForList
+ *  > queryForMap
  */
-public class TemplateWithXml {
-    JdbcTemplate jt = null;
+public class A2_JTXml {
+    private JdbcTemplate jt = null;
     @Before
     public void init() {
-        ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("a10_SpringJdbcTemplate.xml");
+        ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("a10_Spring-JdbcTemplate.xml");
         jt = ctx.getBean("jdbcTemplate",JdbcTemplate.class);
     }
 
@@ -45,6 +49,7 @@ public class TemplateWithXml {
 
     @Test
     public void scalar() {
-
+        Integer integer = jt.queryForObject("select count(*) from user", Integer.class);
+        System.out.println("count(*) : " + integer);
     }
 }

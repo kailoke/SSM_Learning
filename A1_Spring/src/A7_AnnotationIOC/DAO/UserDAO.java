@@ -1,6 +1,5 @@
 package A7_AnnotationIOC.DAO;
 
-
 import A7_AnnotationIOC.Domain.User;
 
 import java.util.List;

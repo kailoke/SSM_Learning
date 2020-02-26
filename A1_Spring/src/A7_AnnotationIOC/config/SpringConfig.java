@@ -3,9 +3,12 @@ package A7_AnnotationIOC.config;
 import org.springframework.context.annotation.*;
 
 /**
- * > @ComponentScan：指定注解扫描的base-packages
- * > @Configuration：将修饰类作为Spring的配置类
- * > @Import: 导入类字节码，一同被解析
+ * 三、@ComponentScan：注解开启组件扫描，配置base-packages
+ *
+ * 四、@Configuration：将修饰类作为Spring的配置类，更改ClassPathXmlApplicationContext(String,Class)的根路径
+ *
+ * 五、@Import: 导入其他配置类的字节码，其他配置类不需要注明配置
+ *              > 可能是运行时动态加载字节码
  */
 
 @Import(JdbcConfig.class)

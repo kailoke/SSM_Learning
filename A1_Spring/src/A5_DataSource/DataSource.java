@@ -5,14 +5,17 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.sql.SQLException;
 
-/**
- * 引用外部文件
- * 通过spring类：PropertyPlaceholderConfigurer，指明location属性
- * 简化写法：命名空间context:property-placeholder，指明location属性
+/** 引用外部文件
+ * 一、引用方式
+ *  > xml：xmlns context:property-placeholder，指明location属性
+ *  > 注解：@ResourceSource(value = {location...}，Spring高版本自带EL解析器
+ *      > Spring类：PropertyPlaceholderConfigurer占位符解析器Bean
+ *          > return new PropertyPlaceHolderConfigurer()
+ *          > location由注解指定
  *
- * spring语法：
- * classpath   :从当前工程src下寻找文件
- * classpath*  :从所有工程src下寻找文件
+ * 四、SpEL语法：
+ *  > classpath   :从当前工程src下寻找文件
+ *  > classpath*  :从所有工程src下寻找文件
  */
 public class DataSource {
     @Test

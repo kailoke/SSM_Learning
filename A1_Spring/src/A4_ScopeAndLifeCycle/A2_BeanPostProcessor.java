@@ -16,7 +16,7 @@ import org.springframework.beans.factory.config.BeanPostProcessor;
  * > AfterInitialization，Bean init-method后的信息检验
  */
 
-public class A3_BeanPostProcessor implements BeanPostProcessor {
+public class A2_BeanPostProcessor implements BeanPostProcessor {
 
     @Override
     // 初始化前执行

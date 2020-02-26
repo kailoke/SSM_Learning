@@ -23,5 +23,5 @@
 
 
   <!-- 三、Bean后置处理器 -->
-  <bean class="A4_ScopeAndLifeCycle.A3_BeanPostProcessor"/>
+  <bean class="A4_ScopeAndLifeCycle.A2_BeanPostProcessor"/>
 </beans>

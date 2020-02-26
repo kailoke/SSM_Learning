@@ -1,15 +1,15 @@
-package A9_AnnotationAOP.util;
+package A9_AOPAnnotation.util;
 
 import org.aspectj.lang.annotation.*;
 import org.springframework.stereotype.Component;
 
 /**
- * 记录日志的类，作为通知类型
+ * 记录日志的通知类
  */
 @Component("logger")
 @Aspect
 public class Logger {
-    @Pointcut("execution(* A9_AnnotationAOP.service.*.*(..))")
+    @Pointcut("execution(* A9_AOPAnnotation.service.*.*(..))")
     private void pt1(){}
 
     @Before("pt1()")

@@ -1,35 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:tx="http://www.springframework.org/schema/tx"
        xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
-                           http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+                           http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
   <bean id="accountService" class="A11_Transaction.service.AccountServiceImpl">
     <property name="accountDao" ref="accountDao"/>
   </bean>
 
+  <!-- 向继承了JdbcDaoSupport的DaoImpl注入dataSource实例化jdbcTemplate -->
   <bean id="accountDao" class="A11_Transaction.dao.AccountDaoImpl">
     <property name="dataSource" ref="dataSource"/>
   </bean>
 
+  <context:property-placeholder location="A11_Transaction/jdbc.properties"/>
   <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-    <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
-    <property name="url" value="jdbc:mysql:///test?serverTimezone=Asia/Shanghai"/>
-    <property name="username" value="root"/>
-    <property name="password" value="root"/>
+    <property name="driverClassName" value="${jdbc.driverClassName}"/>
+    <property name="url" value="${jdbc.url}"/>
+    <property name="username" value="${jdbc.username}"/>
+    <property name="password" value="${jdbc.password}"/>
   </bean>
 
   <!-- Spring基于Xml的声明式事务控制 -->
-  <!-- 1.事务Bean -->
+  <!-- 1.事务Bean，使用PlatformTransactionManager的实现类 -->
   <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
     <property name="dataSource" ref="dataSource"/>
   </bean>
 
-  <!-- 2.事务的通知 -->
+  <!-- 2.事务通知 tx:advice -->
   <tx:advice id="txAdvice" transaction-manager="transactionManager">
-    <tx:attributes>
-      <!-- 事务属性
+    <tx:attributes> <!-- TransactionDefinition
         isolation:事务的隔离级别，默认 default使用数据库的隔离级别
         propagation:事务的传播行为，默认 required
         timeout:事务的超时时间，默认-1
@@ -37,12 +40,13 @@
         rollback-for="" 指定异常，发生异常时执行回滚；其他异常则不回滚。没有默认值，任何异常都回滚
         no-rollback-for="" 指定异常，发生异常时不回滚；其他异常则回滚。没有默认值，任何异常都回滚
        -->
+      <!-- 切入点方法 -->
       <tx:method name="*" isolation="DEFAULT" propagation="REQUIRED" read-only="false"/>
       <tx:method name="find*"/>
     </tx:attributes>
   </tx:advice>
 
-  <!-- 3.advisorAOP -->
+  <!-- 3.AOP通知器 -->
   <aop:config>
     <aop:pointcut id="pt1" expression="execution(* A11_Transaction.service.*.*(..))"/>
     <aop:advisor advice-ref="txAdvice" pointcut-ref="pt1"/>

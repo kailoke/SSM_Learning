@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service("accountService")
-@Transactional()
+//@Transactional
 public class AccountServiceImpl implements AccountService {
     @Autowired
     private AccountDao accountDao;
@@ -18,6 +18,7 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
+    @Transactional()
     public void transfer(String sourceAccount, String targetAccount, Double money) {
         // 1. 查询账户
         Account source = accountDao.findAccountByName(sourceAccount);

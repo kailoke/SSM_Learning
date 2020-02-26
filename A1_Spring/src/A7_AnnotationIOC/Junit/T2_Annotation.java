@@ -2,23 +2,25 @@ package A7_AnnotationIOC.Junit;
 
 import A7_AnnotationIOC.Domain.User;
 import A7_AnnotationIOC.Service.UserServiceImpl;
+import A7_AnnotationIOC.config.SpringConfig;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import java.util.List;
 
 /**
- * xml+基础annotation 测试DAO
+ * 全注解测试DAO
  */
 
-public class XmlAndAnnotation {
+public class T2_Annotation {
     private ApplicationContext ctx;
 
     @Before
     public void initCTX() {
-        ctx = new ClassPathXmlApplicationContext("a7_AnnotationIOC.xml");
+        // AnnotationIOC读取configuration类的字节码进行Bean解析
+        ctx = new AnnotationConfigApplicationContext(SpringConfig.class);
     }
 
     @Test

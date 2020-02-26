@@ -1,4 +1,4 @@
-package A9_AnnotationAOP.service;
+package A9_AOPAnnotation.service;
 
 /**
  * 模拟User业务层接口

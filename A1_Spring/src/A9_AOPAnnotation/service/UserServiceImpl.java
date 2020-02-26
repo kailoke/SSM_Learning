@@ -1,4 +1,4 @@
-package A9_AnnotationAOP.service;
+package A9_AOPAnnotation.service;
 
 import org.springframework.stereotype.Service;
 

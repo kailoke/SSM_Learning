@@ -1,6 +1,6 @@
 package A8_AOP.service;
 
-import A9_AnnotationAOP.service.IUserService;
+import A9_AOPAnnotation.service.IUserService;
 
 /**
  * 模拟User业务层的实现类

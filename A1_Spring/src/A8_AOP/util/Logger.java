@@ -1,7 +1,7 @@
 package A8_AOP.util;
 
 /**
- * 记录日志的类，作为通知类型
+ * 记录日志的通知类
  */
 public class Logger {
     // 前置通知

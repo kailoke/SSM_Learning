@@ -3,8 +3,7 @@ package A4_ScopeAndLifeCycle;
 import org.junit.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-/**
- * Bean的作用域
+/** Bean的作用域
  * 一、scope = singleton
  * > 单例Bean，IOC容器创建时实例化singletonBean
  * > 单例Bean在IOC容器是单例的，getBean时获取单例Bean的引用
@@ -13,7 +12,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  * > 原型Bean，IOC容器创建时不会实例化
  * > 每次getBean时创建原型Bean的实例并返回
  *
- * 三、WebApplicationContext中的Scope
+ * 三、Scope in "WebApplicationContext"
  * > request:每次请求创建新Bean对象
  * > session:每次会话创建新Bean对象
  * > globalSession:一次全局会话(多个服务器之间)

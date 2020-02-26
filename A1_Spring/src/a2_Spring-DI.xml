@@ -37,7 +37,7 @@
     <property name="id" value="101"/>
     <property name="name" value="张飞"/>
     <!-- ref引用Bean -->
-    <property name="car" ref="car1" />
+    <property name="car" ref="car1"/>
   </bean>
 
   <bean id="gy" class="A2_DI.A2_Person">

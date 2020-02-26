@@ -3,10 +3,18 @@ package A10_JdbcTemplate;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
-/**
- * JdbcTemplate使用步骤
+/** JdbcTemplate：Spring对JDBC的轻量封装
+ * 一、使用流程
+ *  > 获取对象(DataSource)
+ *  > 执行操作(无数据源则传入Connection)
+ *
+ * 二、Attention
+ *  > DataAccessException，Spring-core包定义并且处理
+ *
+ * 三、JdbcDaoSupport
+ *  > 内部维护 JdbcTemplate 属性，提供jdbcTemplate对象的 get() && setDataSource初始化方法
  */
-public class Template {
+public class A1_JdbcTemplate {
     public static void main(String[] args) {
         // 定义数据源
         DriverManagerDataSource ds = new DriverManagerDataSource();

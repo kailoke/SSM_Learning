@@ -6,6 +6,9 @@ import org.springframework.transaction.PlatformTransactionManager;
 
 import javax.sql.DataSource;
 
+/**
+ * TransactionManager配置类
+ */
 public class TransactionManager {
     @Bean(name = "transactionManager")
     public PlatformTransactionManager creatTransactionManager(DataSource  dataSource) {

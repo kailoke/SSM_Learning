@@ -3,7 +3,8 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-  <!-- 自动装配:对象类型 -->
+  <!-- xml自动装配autowire -->
+  <!-- 1. byType -->
   <bean id="car" class="A6_Autowire.Car">
     <property name="brand" value="高尔夫"/>
     <property name="price" value="180000"/>
@@ -13,7 +14,7 @@
     <property name="city" value="成都"/>
   </bean>
 
-
+  <!-- 2. byName-->
   <bean id="tom1" class="A6_Autowire.Person" autowire="byName">
     <property name="name" value="tom"/>
   </bean>

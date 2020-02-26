@@ -4,15 +4,20 @@ import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-/**
- * autowire:自动装配引用对象
+/** autowire:自动装配引用对象
  * 一、xml配置特性：
  *  > 必须对全部引用属性进行装配
- *  > 仅能指定一个装配方式
- * 二、byName：
- * > 寻找IOC中bean的id值与 装配对象的属性名进行匹配，匹配成功则装配，否则为null
- * 三、byType:
- * > 寻找IOC中bean的类型“唯一”与装配对象的属性类型进行匹配
+ *  > 仅能指定一个装配模式
+ *
+ * 二、装配模式
+ *  > no        默认不装配，需要用户手动指定value | ref
+ *  > byName    寻找IOC中bean的id值与 装配对象的属性名进行匹配，匹配成功则装配，否则为null
+ *  > byType    寻找IOC中bean的类型“唯一”与装配对象的属性类型进行匹配
+ *  > constructor   类似byType，但需要传入Class参数
+ *  > autodetected  constructor匹配失败后进行byType匹配
+ *
+ * 三、注解配置特性：
+ *  > @autowired：若byType匹配到多个后，按byName进行唯一匹配
  */
 
 public class A0_Autowire {

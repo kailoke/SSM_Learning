@@ -13,7 +13,7 @@
   <!--  二、创建Bean三种方式 -->
 
   <!-- 2.2 静态工厂 factory-method工厂方法 -->
-  <bean id="tom" class="A1_MakeBean.StaticFactory" factory-method="getPerson"/>
+  <bean id="tom" class="A1_MakeBean.A2_StaticFactory" factory-method="getPerson"/>
 
 
   <!-- 2.3 FactoryBean -->

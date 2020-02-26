@@ -10,26 +10,18 @@
   <!-- service -->
   <bean id="userService" class="A8_AOP.service.UserServiceImpl"/>
 
-
   <!-- 通知类 -->
   <bean id="logger" class="A8_AOP.util.Logger"/>
 
-  <!--  Spring开启注解AOP支持 -->
-  <!--  <aop:aspectj-autoproxy/>-->
-
   <!--  1.aop配置 -->
   <aop:config>
-    <!-- 切入点表达式
-      全路径： Modifier returnType packages.Class.method(argCLasses)
-      * 通配： (可省略) * *..*.*(..)
-    -->
     <aop:pointcut id="pt1" expression="execution(* A8_AOP.service..*.*(..))"/>
     <!-- 2.aop切面属性
       id : 切面名称
-      ref: 应用通知Bean的id
+      ref: 通知Bean的引用
     -->
     <aop:aspect id="logAdvice" ref="logger">
-      <!-- 3.切面
+      <!-- 3.切面信息s
         aop:xxx 通知类型
         method : 通知方法
         pointcut : 切入点
