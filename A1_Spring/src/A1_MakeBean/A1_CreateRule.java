@@ -23,13 +23,13 @@ public class A1_CreateRule {
     // ApplicationContext
     public void instantLoad() {
         // xml解析后已经创建所有Bean
-        ApplicationContext ctx = new ClassPathXmlApplicationContext("a1_MakeBean.xml");
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("A1_MakeBean/a1_MakeBean.xml");
     }
 
     @Test
     // BeanFactory
     public void lazyLoad() {
-        Resource resource = new ClassPathResource("a1_MakeBean.xml");
+        Resource resource = new ClassPathResource("A1_MakeBean/a1_MakeBean.xml");
         BeanFactory beanFactory = new XmlBeanFactory(resource);
 //        Person person = beanFactory.getBean("person", Person.class);
     }

@@ -21,7 +21,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class Relation {
     @Test
     public void parent() {
-        ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("a3_Spring-Relation.xml");
+        ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("A3_Relation/a3_Spring-Relation.xml");
         Address addr1 = ctx.getBean("addr1", Address.class);
         System.out.println(addr1);
         Address addr2 = ctx.getBean("addr2", Address.class);
@@ -30,7 +30,7 @@ public class Relation {
 
     @Test
     public void dependOn() {
-        ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("a3_Spring-Relation.xml");
+        ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("A3_Relation/a3_Spring-Relation.xml");
         Address depend = ctx.getBean("depend", Address.class);
         System.out.println(depend);
     }

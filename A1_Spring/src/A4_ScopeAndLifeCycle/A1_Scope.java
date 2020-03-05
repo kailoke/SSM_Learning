@@ -22,7 +22,7 @@ public class A1_Scope {
     @Test
     // 一、单例Bean
     public void singletonBean() {
-        ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("a4_Spring-ScopeLifeCycle.xml");
+        ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("A4_ScopeAndLifeCycle/a4_Spring-ScopeLifeCycle.xml");
 //        Car singleton1 = ctx.getBean("singleton", Car.class);
 //        Car singleton2 = ctx.getBean("singleton", Car.class);
 //        System.out.println(singleton1 == singleton2);   // true
@@ -31,7 +31,7 @@ public class A1_Scope {
     @Test
     // 二、原型Bean
     public void prototype() {
-        ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("a4_Spring-ScopeLifeCycle.xml");
+        ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("A4_ScopeAndLifeCycle/a4_Spring-ScopeLifeCycle.xml");
         Car prototype1 = ctx.getBean("prototype", Car.class);
         Car prototype2 = ctx.getBean("prototype", Car.class);
         System.out.println(prototype1 == prototype2);   // false

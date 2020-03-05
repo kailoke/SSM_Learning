@@ -27,7 +27,7 @@ public class A1_CatTest {
 
     @Before
     public void initIOC() {
-        ctx = new ClassPathXmlApplicationContext("a2_Spring-DI.xml");
+        ctx = new ClassPathXmlApplicationContext("A2_DI/a2_Spring-DI.xml");
     }
 
     @Test

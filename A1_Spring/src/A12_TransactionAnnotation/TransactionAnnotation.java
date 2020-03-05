@@ -16,6 +16,11 @@ public class TransactionAnnotation {
     public static void main(String[] args) {
         ApplicationContext ctx = new AnnotationConfigApplicationContext(SpringConfiguration.class);
         AccountService accountService = ctx.getBean("accountService", AccountService.class);
-        accountService.transfer("aaa","bbb",500.0);
+        try {
+            accountService.transfer("aaa","bbb",500.0);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        System.out.println("exception captured");
     }
 }

@@ -17,7 +17,7 @@ public class A4_PersonMap {
 
     // 测试方法
     public static void main(String[] args) {
-        ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("a2_Spring-DI.xml");
+        ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("A2_DI/a2_Spring-DI.xml");
         A4_PersonMap map = ctx.getBean("map", A4_PersonMap.class);
         System.out.println(map);
     }

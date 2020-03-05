@@ -21,7 +21,7 @@ public class DataSource {
     @Test
     // 直接配置
     public void directlySet() throws SQLException {
-        ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("a5_Spring-DataSource.xml");
+        ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("A5_DataSource/a5_Spring-DataSource.xml");
         javax.sql.DataSource dataSource1 = ctx.getBean("dataSource1", javax.sql.DataSource.class);
         System.out.println("DataSource: " + dataSource1);
         System.out.println("Connection: " + dataSource1.getConnection());
@@ -30,7 +30,7 @@ public class DataSource {
     @Test
     // IOC PropertyPlaceholder
     public void placeholder() throws SQLException {
-        ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("a5_Spring-DataSource.xml");
+        ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("A5_DataSource/a5_Spring-DataSource.xml");
         javax.sql.DataSource dataSource2 = ctx.getBean("dataSource2", javax.sql.DataSource.class);
         System.out.println("DataSource: " + dataSource2);
         System.out.println("Connection: " + dataSource2.getConnection());

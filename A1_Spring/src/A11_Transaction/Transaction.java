@@ -34,7 +34,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  */
 public class Transaction {
     public static void main(String[] args) {
-        ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("a11_SpringTx.xml");
+        ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("A11_Transaction/a11_SpringTx.xml");
         AccountService accountService = ctx.getBean("accountService", AccountService.class);
 
         accountService.transfer("aaa","bbb",500.0);

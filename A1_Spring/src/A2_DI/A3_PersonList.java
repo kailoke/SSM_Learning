@@ -16,7 +16,7 @@ public class A3_PersonList {
 
     // 测试方法
     public static void main(String[] args) {
-        ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("a2_Spring-DI.xml");
+        ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("A2_DI/a2_Spring-DI.xml");
         A3_PersonList list = ctx.getBean("list", A3_PersonList.class);
         System.out.println(list);
     }

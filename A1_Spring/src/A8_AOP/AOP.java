@@ -40,7 +40,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class AOP {
     public static void main(String[] args) {
-        ApplicationContext ctx = new ClassPathXmlApplicationContext("a8_Spring-AOP.xml");
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("A8_AOP/a8_Spring-AOP.xml");
         IUserService userService = ctx.getBean("userService", IUserService.class);
 
         userService.addUser();

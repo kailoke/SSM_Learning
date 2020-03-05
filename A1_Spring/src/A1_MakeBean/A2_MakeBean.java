@@ -23,13 +23,13 @@ public class A2_MakeBean {
     @Test
     // 1.调用默认无参构造器
     public void defaultConstructor() {
-        ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("a1_MakeBean.xml");
+        ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("A1_MakeBean/a1_MakeBean.xml");
     }
 
     @Test
     // 2.工厂方法 factory-method
     public void factoryMethod() {
-        ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("a1_MakeBean.xml");
+        ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("A1_MakeBean/a1_MakeBean.xml");
         Person tom = ctx.getBean("tom", Person.class);
         System.out.println(tom);
     }
@@ -37,7 +37,7 @@ public class A2_MakeBean {
     @Test
     // 3.FactoryBean
     public void factoryBean() {
-        ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("a1_MakeBean.xml");
+        ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("A1_MakeBean/a1_MakeBean.xml");
         Person jerry = ctx.getBean("jerry", Person.class);
         System.out.println(jerry);
     }

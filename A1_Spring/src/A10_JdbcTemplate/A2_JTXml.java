@@ -23,7 +23,7 @@ public class A2_JTXml {
     private JdbcTemplate jt = null;
     @Before
     public void init() {
-        ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("a10_Spring-JdbcTemplate.xml");
+        ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("A10_JdbcTemplate/a10_Spring-JdbcTemplate.xml");
         jt = ctx.getBean("jdbcTemplate",JdbcTemplate.class);
     }
 

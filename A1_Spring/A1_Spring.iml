@@ -2,7 +2,23 @@
 <module type="JAVA_MODULE" version="4">
   <component name="FacetManager">
     <facet type="Spring" name="Spring">
-      <configuration />
+      <configuration>
+        <fileset id="fileset" name="Spring Application Context" removed="false">
+          <file>file://$MODULE_DIR$/src/a1_MakeBean.xml</file>
+          <file>file://$MODULE_DIR$/src/a2_Spring-DI.xml</file>
+          <file>file://$MODULE_DIR$/src/a3_Spring-Relation.xml</file>
+          <file>file://$MODULE_DIR$/src/a4_Spring-ScopeLifeCycle.xml</file>
+          <file>file://$MODULE_DIR$/src/a5_Spring-DataSource.xml</file>
+          <file>file://$MODULE_DIR$/src/a6_Spring-Autowire.xml</file>
+          <file>file://$MODULE_DIR$/src/a7_AnnotationIOC.xml</file>
+          <file>file://$MODULE_DIR$/src/a8_Spring-AOP.xml</file>
+          <file>file://$MODULE_DIR$/src/a10_Spring-JdbcTemplate.xml</file>
+          <file>file://$MODULE_DIR$/src/a11_SpringTx.xml</file>
+          <file>file://$MODULE_DIR$/src/A9_AOPAnnotation/config/SpringConfig.java</file>
+          <file>file://$MODULE_DIR$/src/A7_AnnotationIOC/config/SpringConfig.java</file>
+          <file>file://$MODULE_DIR$/src/A12_TransactionAnnotation/config/SpringConfiguration.java</file>
+        </fileset>
+      </configuration>
     </facet>
   </component>
   <component name="NewModuleRootManager" inherit-compiler-output="true">
@@ -23,10 +39,10 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="library" name="druid-1.1.10" level="project" />
     <orderEntry type="library" name="mysql-connector-java-8.0.18" level="project" />
     <orderEntry type="library" name="commons-dbutils-1.3" level="project" />
     <orderEntry type="library" name="aspectjweaver-1.9.5" level="project" />
-    <orderEntry type="library" name="JdbcTemplate" level="project" />
+    <orderEntry type="library" name="SpringJdbc" level="project" />
+    <orderEntry type="library" name="druid-1.1.10" level="project" />
   </component>
 </module>

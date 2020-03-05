@@ -25,7 +25,7 @@ public class A0_Autowire {
 
     @Before
     public void init() {
-        ctx = new ClassPathXmlApplicationContext("a6_Spring-Autowire.xml");
+        ctx = new ClassPathXmlApplicationContext("A6_Autowire/a6_Spring-Autowire.xml");
     }
 
     @Test

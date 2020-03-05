@@ -13,7 +13,7 @@ public class A2_Person {
 
     // 测试方法
     public static void main(String[] args) {
-        ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("a2_Spring-DI.xml");
+        ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("A2_DI/a2_Spring-DI.xml");
         A2_Person person = ctx.getBean("zf", A2_Person.class);
         System.out.println(person);
 

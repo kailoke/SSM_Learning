@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
 @ComponentScan("A12_TransactionAnnotation")
-@Import({JdbcConfiguration.class,TransactionManager.class})
+@Import({JdbcConfiguration.class})
 @EnableTransactionManagement
 public class SpringConfiguration {
 

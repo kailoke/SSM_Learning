@@ -18,7 +18,7 @@ public class T1_XmlAndAnnotation {
 
     @Before
     public void initCTX() {
-        ctx = new ClassPathXmlApplicationContext("a7_AnnotationIOC.xml");
+        ctx = new ClassPathXmlApplicationContext("A7_AnnotationIOC/a7_AnnotationIOC.xml");
     }
 
     @Test

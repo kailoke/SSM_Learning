@@ -26,7 +26,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class A3_LifeCycle {
     @Test
     public void lifeCycle() {
-        ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("a4_Spring-ScopeLifeCycle.xml");
+        ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("A4_ScopeAndLifeCycle/a4_Spring-ScopeLifeCycle.xml");
         Car lifeCycle = ctx.getBean("lifeCycle", Car.class);
         System.out.println("使用Bean对象" + lifeCycle);
 
