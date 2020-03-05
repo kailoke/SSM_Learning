@@ -6,18 +6,20 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
   <!-- 组件扫描 -->
-  <context:component-scan base-package="A1_HelloWorld" />
-  <context:component-scan base-package="A2_SpringMVCHandler" />
-  <context:component-scan base-package="A4_REST" />
+  <context:component-scan base-package="A1_HelloWorld"/>
+  <context:component-scan base-package="A2_SpringMVCHandler"/>
   <context:component-scan base-package="A3_RequestData"/>
+  <context:component-scan base-package="A4_REST"/>
   <context:component-scan base-package="A5_POJO"/>
   <context:component-scan base-package="A6_ModelAndView"/>
+  <context:component-scan base-package="A7_Interceptor"/>
+  <context:component-scan base-package="A8_Json"/>
 
   <!-- HandlerAdapter -->
   <!-- SimpleControllerHA support() Controller -->
-<!--  <bean class="org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter">-->
+  <!--  <bean class="org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter">-->
 
-<!--  </bean>-->
+  <!--  </bean>-->
 
 
   <!-- 内部(路径)资源视图解析器-->
@@ -27,6 +29,32 @@
   </bean>
 
   <mvc:view-controller path="/ViewController" view-name="success"/>
-<!--  <mvc:annotation-driven/>-->
+  <!-- view-controller invalidate RequestMapping注解 -->
+  <mvc:annotation-driven/>
+  <!--  annotation-driven:启用Spring新组件以替换旧组件
+   一、处理器适配器的默认组件
+      > 1.HttpRequestHandlerAdapter
+      > 2.SimpleControllerHandlerAdapter
+      > 3.AnnotationMethodHandlerAdapter
+
+   二、view-controller || default-servlet-handler 不注册 AnnotationMethodHandlerAdapter
+      > annotation-driven 会注册 RequestMappingHandlerAdapter
+  -->
+
+
+  <!-- 拦截器 -->
+  <mvc:interceptors>
+    <!-- 拦截所有请求 -->
+<!--    <bean class="A7_Interceptor.A1_Interceptor"/>-->
+    <ref bean="a1_Interceptor"/>
+    <bean class="A7_Interceptor.A1_Interceptor2"/>
+<!--    <mvc:interceptor>-->
+<!--      &lt;!&ndash; 指定拦截 &ndash;&gt;-->
+<!--      <mvc:mapping path="/path1.."/>-->
+<!--      <mvc:exclude-mapping path="/path2.."/>-->
+<!--      <bean class="A7_Interceptor.A1_Interceptor"/>-->
+<!--      <ref bean="a1_Interceptor"/>-->
+<!--    </mvc:interceptor>-->
+  </mvc:interceptors>
 
 </beans>

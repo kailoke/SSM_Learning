@@ -4,7 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /** 请求处理器
- * > 1. HandlerAdapter
+ * > 1. HandlerAdapter：由DispatcherServlet默认装配
  *  > 处理器适配器，使用@Controller组件标识；
  *  > 编程方式：顶级接口HandlerAdapter，supports():return handler instanceof Controller
  *      > handler(HttpReq,HttpRsp):return ModelAndView

@@ -14,11 +14,11 @@
     </facet>
     <facet type="Spring" name="Spring">
       <configuration>
-        <fileset id="web springDispatcherServlet servlet context" name="MVC springDispatcherServlet servlet context" removed="true">
-          <file>file://$MODULE_DIR$/src/config/SpringMVC.xml</file>
-        </fileset>
         <fileset id="fileset" name="Spring Application Context" removed="false">
-          <file>file://$MODULE_DIR$/src/config/SpringMVC.xml</file>
+          <file>file://$MODULE_DIR$/src/Springmvc.xml</file>
+        </fileset>
+        <fileset id="web springDispatcherServlet servlet context" name="MVC springDispatcherServlet servlet context" removed="true">
+          <file>file://$MODULE_DIR$/src/Springmvc.xml</file>
         </fileset>
       </configuration>
     </facet>
@@ -32,8 +32,8 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="spring" level="project" />
     <orderEntry type="library" name="SpringMVC" level="project" />
+    <orderEntry type="library" name="standard" level="project" />
     <orderEntry type="library" name="jstl" level="project" />
     <orderEntry type="library" name="servlet-api" level="project" />
-    <orderEntry type="library" name="jackson-2.10.2" level="project" />
   </component>
 </module>
