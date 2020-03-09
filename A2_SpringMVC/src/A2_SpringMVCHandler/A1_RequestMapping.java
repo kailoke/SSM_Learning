@@ -1,7 +1,6 @@
 package A2_SpringMVCHandler;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -21,22 +20,20 @@ public class A1_RequestMapping {
     }
 
     // 2.请求方式
-    @RequestMapping(path = "RequestMappingMethod",method = {RequestMethod.POST,RequestMethod.GET})
+    @RequestMapping(path = "/RequestMappingMethod",method = {RequestMethod.POST,RequestMethod.GET})
     public String method() {
         return "success";
     }
 
     // 3.指定请求携带的参数，不满足则不能访问  !(不包含参数)，!=(参数不等于)，=(参数等于)
-    @RequestMapping(path = "RequestMappingParams", params = {"username!=jerry","password","!gender"})
+    @RequestMapping(path = "/RequestMappingParams", params = {"username!=jerry","password","!gender"})
     public String params() {
         return "success";
     }
 
     // 4.指定请求携带的请求头信息，不满足则不能访问
-    @RequestMapping(path = "RequestMappingHeaders", headers = "!Accept-Language")
+    @RequestMapping(path = "/RequestMappingHeaders", headers = "!Accept-Language")
     public String header() {
         return "success";
     }
-
-
 }

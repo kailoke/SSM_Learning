@@ -12,7 +12,7 @@
 
   <h3>二、@RequestMapping</h3>
   <li>2.1 <a href="./RequestMappingElementType">RequestMappingElementType: METHOD</a></li>
-  <li>2.1 <a href="./SpringMVC/RequestMappingElementType">RequestMappingElementType: TYPE</a></li><br/>
+  <li>2.1 <a href="./RequestMappingElementType">RequestMappingElementType: TYPE</a></li><br/>
 
   <li>2.3 <a href="./RequestMappingMethod">RequestMappingMethod: Get</a></li>
   <li>2.4 <form action="./RequestMappingMethod" method="post" style="display: inline">

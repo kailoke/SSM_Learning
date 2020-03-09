@@ -27,7 +27,7 @@ public class AccountServiceImpl implements AccountService {
 
         // 3.更新账户信息
         accountDao.update(source);
-//        int i = 1 / 0;    // 模拟事务中的异常
+        int i = 1 / 0;    // 模拟事务中的异常
         accountDao.update(target);
     }
 }

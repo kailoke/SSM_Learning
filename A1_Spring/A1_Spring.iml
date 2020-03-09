@@ -4,19 +4,21 @@
     <facet type="Spring" name="Spring">
       <configuration>
         <fileset id="fileset" name="Spring Application Context" removed="false">
-          <file>file://$MODULE_DIR$/src/a1_MakeBean.xml</file>
-          <file>file://$MODULE_DIR$/src/a2_Spring-DI.xml</file>
-          <file>file://$MODULE_DIR$/src/a3_Spring-Relation.xml</file>
-          <file>file://$MODULE_DIR$/src/a4_Spring-ScopeLifeCycle.xml</file>
-          <file>file://$MODULE_DIR$/src/a5_Spring-DataSource.xml</file>
-          <file>file://$MODULE_DIR$/src/a6_Spring-Autowire.xml</file>
-          <file>file://$MODULE_DIR$/src/a7_AnnotationIOC.xml</file>
-          <file>file://$MODULE_DIR$/src/a8_Spring-AOP.xml</file>
-          <file>file://$MODULE_DIR$/src/a10_Spring-JdbcTemplate.xml</file>
-          <file>file://$MODULE_DIR$/src/a11_SpringTx.xml</file>
           <file>file://$MODULE_DIR$/src/A9_AOPAnnotation/config/SpringConfig.java</file>
           <file>file://$MODULE_DIR$/src/A7_AnnotationIOC/config/SpringConfig.java</file>
           <file>file://$MODULE_DIR$/src/A12_TransactionAnnotation/config/SpringConfiguration.java</file>
+        </fileset>
+        <fileset id="fileset2" name="Spring Application Context (2)" removed="false">
+          <file>file://$MODULE_DIR$/src/A1_MakeBean/a1_MakeBean.xml</file>
+          <file>file://$MODULE_DIR$/src/A2_DI/a2_Spring-DI.xml</file>
+          <file>file://$MODULE_DIR$/src/A3_Relation/a3_Spring-Relation.xml</file>
+          <file>file://$MODULE_DIR$/src/A4_ScopeAndLifeCycle/a4_Spring-ScopeLifeCycle.xml</file>
+          <file>file://$MODULE_DIR$/src/A5_DataSource/a5_Spring-DataSource.xml</file>
+          <file>file://$MODULE_DIR$/src/A6_Autowire/a6_Spring-Autowire.xml</file>
+          <file>file://$MODULE_DIR$/src/A7_AnnotationIOC/a7_AnnotationIOC.xml</file>
+          <file>file://$MODULE_DIR$/src/A8_AOP/a8_Spring-AOP.xml</file>
+          <file>file://$MODULE_DIR$/src/A10_JdbcTemplate/a10_Spring-JdbcTemplate.xml</file>
+          <file>file://$MODULE_DIR$/src/A11_Transaction/a11_SpringTx.xml</file>
         </fileset>
       </configuration>
     </facet>

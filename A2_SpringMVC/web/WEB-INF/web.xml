@@ -20,7 +20,7 @@
     <init-param>
       <!-- 指定SpringMVC的配置文件，创建Spring容器 -->
       <param-name>contextConfigLocation</param-name>
-      <param-value>classpath:config/SpringMVC.xml</param-value>
+      <param-value>classpath:SpringMVC.xml</param-value>
     </init-param>
     <!-- 启动时创建 dispatcherServlet -->
     <load-on-startup>1</load-on-startup>

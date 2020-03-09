@@ -5,7 +5,13 @@
        xmlns:aop="http://www.springframework.org/schema/aop"
        xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
-                           http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+                           http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/tx
+                           http://www.springframework.org/schema/tx/spring-tx.xsd
+                           http://www.springframework.org/schema/aop
+                           http://www.springframework.org/schema/aop/spring-aop.xsd
+                           http://www.springframework.org/schema/context
+                           http://www.springframework.org/schema/context/spring-context.xsd">
 
   <bean id="accountService" class="A11_Transaction.service.AccountServiceImpl">
     <property name="accountDao" ref="accountDao"/>
@@ -41,14 +47,15 @@
         no-rollback-for="" 指定异常，发生异常时不回滚；其他异常则回滚。没有默认值，任何异常都回滚
        -->
       <!-- 切入点方法 -->
+      <tx:method name="find*" read-only="true"/>
+      <!-- otherWise，除了上面指定的方法外执行 -->
       <tx:method name="*" isolation="DEFAULT" propagation="REQUIRED" read-only="false"/>
-      <tx:method name="find*"/>
     </tx:attributes>
   </tx:advice>
 
-  <!-- 3.AOP通知器 -->
+  <!-- 3.AOP通知器，关联 方法位置(切入点表达式)和tx:advice -->
   <aop:config>
-    <aop:pointcut id="pt1" expression="execution(* A11_Transaction.service.*.*(..))"/>
-    <aop:advisor advice-ref="txAdvice" pointcut-ref="pt1"/>
+    <aop:pointcut id="txPointCut" expression="execution(* A11_Transaction.service.*.*(..))"/>
+    <aop:advisor advice-ref="txAdvice" pointcut-ref="txPointCut"/>
   </aop:config>
 </beans>

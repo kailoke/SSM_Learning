@@ -13,7 +13,7 @@ import javax.sql.DataSource;
  * jdbc配置类
  * > @PropertySource(value = {location ...})，使用SpEL表达式注入
  */
-@PropertySource(value = {"classpath:A11_Transaction/jdbc.properties"})
+@PropertySource(value = "classpath:A11_Transaction/jdbc.properties")
 public class JdbcConfiguration {
     @Value("${jdbc.driverClassName}")
     private String driverClassName;

@@ -32,6 +32,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  *  > doBegin从连接池中获取连接并且改变连接属性，将设置后的连接传递执行SQl语句
  *  > 使用AOP思想的事务的关键点 completed\exception时进行commit\rollback
  */
+
 public class Transaction {
     public static void main(String[] args) {
         ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("A11_Transaction/a11_SpringTx.xml");
