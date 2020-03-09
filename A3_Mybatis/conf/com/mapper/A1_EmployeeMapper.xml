@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--  配置SQL映射
+namespace:命名空间，按照Mapper接口开发要求写
+<select>
+  > id : 唯一标识
+  > resultType:结果集的映射类型
+  > #{id} : 获取参数值
+-->
+<mapper namespace="com.mapper.A1_EmployeeMapper">
+  <select id="selectEmployee" resultType="Employee">
+    select * from mybatis_employee where id = #{id}
+  </select>
+
+  <!-- Mapper -->
+  <select id="getEmployeeById" resultType="Employee">
+    select id,`name`,email,gender from mybatis_employee where id = #{随便写}
+  </select>
+
+  <!-- public void addEmployee(domain.Employee employee); -->
+  <insert id="addEmployee" parameterType="Employee" useGeneratedKeys="true" keyProperty="id">
+    insert into mybatis_employee(`name`,email,gender) values (#{name},#{email},#{gender});
+  </insert>
+
+  <!-- public void updateEmployee(domain.Employee employee) -->
+  <update id="updateEmployee">
+    update mybatis_employee set
+    `name` = #{name},
+    email = #{email},
+    gender = #{gender} where id = #{id}
+  </update>
+
+  <!-- public void deleteEmployee(Integer id) -->
+  <delete id="deleteEmployee">
+    delete from mybatis_employee where id = #{id}
+  </delete>
+
+
+  <!-- public List<domain.Employee> getEmps() -->
+  <!-- 查询多条数据返回集合，封装类型是对象 -->
+  <select id="getEmps" resultType="Employee">
+    select id,`name`,email,gender from mybatis_employee;
+  </select>
+
+  <!-- public Map<String,Object> getMap(Integer id) -->
+  <!-- 查询单条数据，封装类型是map -->
+  <select id="getMap" resultType="java.util.Map">
+    select id,`name`,email,gender from mybatis_employee where id = #{id};
+  </select>
+
+  <!-- public Map<Integer, domain.Employee> getEmpsMap() -->
+  <!-- 查询多条数据，封装类型是对象 -->
+  <select id="getEmpsMap" resultType="com.domain.Employee">
+    select id,`name`,email,gender from mybatis_employee;
+  </select>
+
+</mapper>

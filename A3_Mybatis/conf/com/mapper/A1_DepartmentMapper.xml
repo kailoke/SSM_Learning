@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.A1_DepartmentMapper">
+
+  <!-- domain.Department getDepartmentById(Integer id) -->
+  <select id="getDepartmentById" resultType="com.domain.Department">
+    select *
+    from mybatis_department
+    where id = #{id};
+  </select>
+
+  <!-- collection -->
+  <!-- domain.Department getDepartmentAndEmps(Integer id) -->
+  <select id="getDepartmentAndEmps" resultMap="departmentEmps">
+    select md.id, md.name, me.id e_id, me.name e_name, me.email, me.d_id
+    from mybatis_department md
+           join mybatis_employee me on me.d_id = md.id
+    where md.id = #{id}
+  </select>
+  <resultMap id="departmentEmps" type="com.domain.Department">
+    <id column="id" property="id"/>
+    <result column="name" property="name"/>
+
+    <!-- 1.映射collection集合内联属性 -->
+    <collection property="emps" ofType="com.domain.Employee">
+      <id column="e_id" property="id"/>
+      <result column="e_name" property="name"/>
+      <result column="email" property="email"/>
+      <result column="gender" property="gender"/>
+    </collection>
+  </resultMap>
+
+    <!-- Department getDepartmentAndEmpsStep(Integer id) -->
+    <!-- 2.分步查询 -->
+  <select id="getDepartmentAndEmpsStep" resultMap="collectionStep">
+    select id,name from mybatis_department where id = #{id}
+  </select>
+  <resultMap id="collectionStep" type="com.domain.Department">
+    <id column="id" property="id"/>
+    <result column="name" property="name"/>
+    <collection property="emps" column="{d_id=id}"
+                select="com.mapper.A3_EmployeeResultMap.getEmpsByDid"/>
+  </resultMap>
+
+</mapper>

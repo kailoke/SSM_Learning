@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+  <!-- 1.属性 -->
+  <properties resource="jdbc.properties">
+    <!--    <property name="jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>-->
+    <!--    <property name="jdbc.url" value="jdbc:mysql:///test?serverTimezone=Asia/Shanghai"/>-->
+  </properties>
+
+  <!-- 2.tweaks -->
+  <settings>
+    <!-- 映射 下划线 至 驼峰命名 -->
+    <setting name="mapUnderscoreToCamelCase" value="true"/>
+  </settings>
+
+  <!-- 3.类型别名 typeAliases-->
+  <typeAliases>
+    <!-- alias不区分大小，且默认为 类名 -->
+    <typeAlias alias="Employee" type="com.domain.Employee"/>
+    <!-- 为其包下所有类批量取别名，需要类名唯一，否则抛出异常 -->
+<!--    <package name="com.mybatis.domain"/>-->
+  </typeAliases>
+
+
+  <!-- 4.环境配置 -->
+  <environments default="development">
+    <!-- 具体的环境 -->
+    <environment id="development">
+      <transactionManager type="JDBC"/>
+      <dataSource type="POOLED">
+        <property name="driver" value="${jdbc.driver}"/>
+        <property name="url" value="${jdbc.url}"/>
+        <property name="username" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+      </dataSource>
+    </environment>
+  </environments>
+
+  <!-- 5.SQL映射文件 -->
+  <mappers>
+    <!-- 指定引入 -->
+<!--    <mapper resource="com/mapper/EmployeeMapper.xml"/>-->
+
+    <!-- 批量引入，Mapper和xml`同目录名` && `同名` -->
+    <package name="com.mapper"/>
+  </mappers>
+</configuration>

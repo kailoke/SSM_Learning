@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.A3_EmployeeResultMap">
+  <select id="getEmployeeById" resultMap="Emp1">
+    select id,`name`,email,gender as sex from mybatis_employee where id = #{id};
+  </select>
+  <!-- 1.自定义映射 -->
+  <resultMap id="Emp1" type="com.domain.Employee">
+    <id column="id" property="id"/>
+    <result column="name" property="name"/>
+    <result column="email" property="email"/>
+    <result column="sex" property="gender"/>
+  </resultMap>
+
+  <!-- domain.Employee getEmployeeDept(Integer id) -->
+  <select id="getEmployeeDept" resultMap="EmployeeDept">
+    select e.id,e.`name`,email,gender,d_id,d.`name` department_name from mybatis_employee e
+        LEFT JOIN mybatis_department d on e.d_id = d.id WHERE e.id = #{ss};
+  </select>
+  <resultMap id="EmployeeDept" type="com.domain.Employee">
+    <id column="id" property="id"/>
+    <result column="name" property="name"/>
+    <result column="email" property="email"/>
+    <result column="gender" property="gender"/>
+
+    <!-- 2.级联访问对象属性 -->
+    <!--    <result column="d_id" property="department.id"/>-->
+    <!--    <result column="department_name" property="department.name"/>-->
+
+    <!-- 3.1 association内联属性的映射 -->
+    <association property="department" javaType="com.domain.Department">
+      <id column="d_id" property="id"/>
+      <result column="department_name" property="name"/>
+    </association>
+  </resultMap>
+
+  <!-- 分步查询：domain.Employee getEmployeeStep(Integer id) -->
+  <select id="getEmployeeStep" resultMap="resultMapEmployee">
+    select * from mybatis_employee where id = #{id};
+  </select>
+  <resultMap id="resultMapEmployee" type="com.domain.Employee">
+    <id column="id" property="id"/>
+    <result column="name" property="name"/>
+    <result column="email" property="email"/>
+    <result column="gender" property="gender"/>
+    <!-- 3.2 分步(子)查询，查询员工部门 -->
+    <association property="department"
+                 select="com.mapper.A1_DepartmentMapper.getDepartmentById" column="d_id"/>
+  </resultMap>
+
+
+  <!-- collection 分步子查询，获取部门所有员工 -->
+  <!-- List<Employee> getEmpsByDid(Integer id)-->
+  <select id="getEmpsByDid" resultType="com.domain.Employee">
+    select id,`name`, email, gender
+    from mybatis_employee
+    where d_id = #{d_id};
+  </select>
+
+</mapper>
