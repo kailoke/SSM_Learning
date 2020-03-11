@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/tx
+                           http://www.springframework.org/schema/tx/spring-tx.xsd
+                           http://www.springframework.org/schema/aop
+                           http://www.springframework.org/schema/aop/spring-aop.xsd
+                           http://www.springframework.org/schema/context
+                           http://www.springframework.org/schema/context/spring-context.xsd">
+
+  <bean id="accountService" class="A10_Transaction.service.AccountServiceImpl">
+    <property name="accountDao" ref="accountDao"/>
+  </bean>
+
+  <!-- 向继承了JdbcDaoSupport的DaoImpl注入dataSource实例化jdbcTemplate -->
+  <bean id="accountDao" class="A10_Transaction.dao.AccountDaoImpl">
+    <property name="dataSource" ref="dataSource"/>
+  </bean>
+
+  <!-- 数据源 -->
+  <context:property-placeholder location="/jdbc.properties"/>
+  <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+    <property name="driverClassName" value="${jdbc.driverClassName}"/>
+    <property name="url" value="${jdbc.url}"/>
+    <property name="username" value="${jdbc.username}"/>
+    <property name="password" value="${jdbc.password}"/>
+  </bean>
+
+  <!-- Spring基于Xml的声明式事务管理器 -->
+  <!-- 1.事务Bean，使用AbstractPlatformTransactionManager的实现类 -->
+  <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+    <!-- 事务管理器管理数据源 -->
+    <property name="dataSource" ref="dataSource"/>
+  </bean>
+
+  <!-- 2.事务通知 tx:advice -->
+  <tx:advice id="txAdvice" transaction-manager="transactionManager">
+    <tx:attributes>
+      <!-- TransactionDefinition 全局的 -->
+
+      <!-- 切入点方法：受事务管理器管理的方法 -->
+      <tx:method name="find*" read-only="true"/>
+      <!-- *=otherWise，除了上面指定的方法外执行 -->
+      <tx:method name="*" isolation="DEFAULT" propagation="REQUIRED" read-only="false"/>
+    </tx:attributes>
+  </tx:advice>
+
+  <!-- 3.aop事务切面，关联 方法位置(切入点表达式)和tx:advice -->
+  <aop:config>
+    <aop:pointcut id="txPointCut" expression="execution(* A10_Transaction.service.*.*(..))"/>
+    <aop:advisor advice-ref="txAdvice" pointcut-ref="txPointCut"/>
+  </aop:config>
+</beans>

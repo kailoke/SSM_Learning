@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+  <!-- A1_Scope:单例||原型 -->
+  <bean id="singleton" class="A4_ScopeAndLifeCycle.Car">
+    <property name="brand" value="的卢"/>
+    <property name="price" value="10000000.0"/>
+  </bean>
+
+  <bean id="prototype" class="A4_ScopeAndLifeCycle.Car" scope="prototype">
+    <property name="brand" value="燎原火"/>
+    <property name="price" value="2000000.0"/>
+  </bean>
+
+
+  <!-- A2_Bean的生命周期 -->
+  <bean id="lifeCycle" class="A4_ScopeAndLifeCycle.Car" init-method="init" destroy-method="destroy">
+    <property name="brand" value="爪黄飞电"/>
+    <property name="price" value="10000000"/>
+  </bean>
+
+
+  <!-- A3_Bean后置处理器，由IOC管理 -->
+  <bean class="A4_ScopeAndLifeCycle.A3_BeanPostProcessor"/>
+</beans>

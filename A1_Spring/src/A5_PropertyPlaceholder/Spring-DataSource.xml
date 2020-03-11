@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+  <!-- 1.直接配置DruidDataSource -->
+  <bean id="dataSource1" class="com.alibaba.druid.pool.DruidDataSource">
+    <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
+    <property name="url" value="jdbc:mysql://localhost:3306/test?serverTimezone=Asia/Shanghai"/>
+    <property name="username" value="root"/>
+    <property name="password" value="root"/>
+  </bean>
+
+
+  <!-- 2.通过Bean读取properties文件配置 -->
+  <!-- 2.1 PropertyPlaceholderConfigurer location -->
+  <!--  <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">-->
+  <!--    <property name="location" value="classpath:druid.properties"/>-->
+  <!--  </bean>-->
+
+  <!-- 2.2 context命名空间:property-placeholder:location -->
+  <context:property-placeholder location="classpath:druid.properties"/>
+  <bean id="dataSource2" class="com.alibaba.druid.pool.DruidDataSource">
+    <!-- 2.2 外部资源使用SpEL表达式 ${} 从namespace:property-placeholder对象中读取数据 -->
+    <property name="driverClassName" value="${jdbc.driverClassName}"/>
+    <property name="url" value="${jdbc.url}"/>
+    <property name="username" value="${jdbc.username}"/>
+    <property name="password" value="${jdbc.password}"/>
+  </bean>
+</beans>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+  <!-- A1_创建Bean的两种规则 -->
+  <!-- 1.1 ApplicationContext立即创建 -->
+  <bean id="person" class="A1_IOC.Person">
+    <property name="name" value="张三"/>
+  </bean>
+
+
+  <!-- A2_创建Bean三种方式 -->
+  <!-- 2.1 自定义静态工厂，factory-method 静态方法 -->
+  <bean id="tom" class="A1_IOC.StaticFactory" factory-method="getPerson" />
+
+  <!-- 2.2 自定义实例工厂
+  * factory-method 实例方法
+  * factory-Bean   实例Bean
+  -->
+
+  <!-- 2.3 implements FactoryBean，实例工厂；或编程式创建实例工厂类(非static方法)
+    factory-method:默认为getObject
+  -->
+  <bean id="jerry" class="A1_IOC.FactoryBeanTest"/>
+</beans>

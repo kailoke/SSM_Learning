@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+  <!-- 被装配Bean -->
+  <bean id="car" class="A2_XmlDI.Car">
+    <property name="brand" value="高尔夫"/>
+    <property name="price" value="180000"/>
+  </bean>
+<!--  <bean id="car2" class="A2_XmlDI.Car">-->
+<!--    <property name="brand" value="高尔夫"/>-->
+<!--    <property name="price" value="180000"/>-->
+<!--  </bean>-->
+
+  <bean id="addr" class="A2_XmlDI.Address">
+    <property name="province" value="四川"/>
+    <property name="city" value="成都"/>
+  </bean>
+
+  <!-- :autowire -->
+  <!-- 1. byType -->
+  <bean id="byTypeTom" class="A2_XmlDI.Person" autowire="byType">
+    <property name="name" value="byTypeTom"/>
+  </bean>
+
+  <!-- 2. byName-->
+  <bean id="byNameTom" class="A2_XmlDI.Person" autowire="byName">
+    <property name="name" value="byNameTom"/>
+  </bean>
+</beans>

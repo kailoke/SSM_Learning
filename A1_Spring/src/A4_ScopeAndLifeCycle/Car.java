@@ -1,9 +1,8 @@
 package A4_ScopeAndLifeCycle;
 
 /** Bean作用域 及 生命周期 测试类
- * Bean的初始及销毁方法
- *  > init-method       Bean初始化完成后执行
- *  > destroy-method    Bean销毁时执行(IOC容器关闭时调用)
+ * > init-method       Bean`完全初始化`完成后执行
+ * > destroy-method    Bean销毁时执行(IOC关闭，GC回收)
  */
 
 public class Car {
@@ -15,7 +14,7 @@ public class Car {
     }
 
     // init-method 属性进行方法指定
-    public void init(){
+    public void init() {
         System.out.println("init-method invoked");
     }
 

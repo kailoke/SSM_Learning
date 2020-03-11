@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+  <!-- xml开启注解组件扫描
+  base-package:扫描基包及其子包下的所有类，默认BeanID为类名首字母小写，注解属性 value = name。
+  use-default-filter:默认true，false才能使用自定义的组件扫描过滤器
+    > context:include-filter:type expression
+    > context:exclude-filter:type expression
+  -->
+  <context:component-scan base-package="A6_AnnotationDI"/>
+
+  <bean id="runner" class="org.apache.commons.dbutils.QueryRunner">
+    <constructor-arg name="ds" ref="dataSource"/>
+  </bean>
+
+  <context:property-placeholder location="classpath:druid.properties"/>
+  <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
+    <property name="driverClassName" value="${jdbc.driverClassName}"/>
+    <property name="url" value="${jdbc.url}"/>
+    <property name="username" value="${jdbc.username}"/>
+    <property name="password" value="${jdbc.password}"/>
+  </bean>
+</beans>

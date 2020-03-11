@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+  <!-- 1. Bean 继承 -->
+  <bean id="addr1" class="A3_BeanRelation.Address">
+    <property name="city" value="Chengdu"/>
+    <property name="street" value="天府大道"/>
+  </bean>
+  <bean id="addr2" class="A3_BeanRelation.Address" parent="addr3">
+    <!--    <property name="city" value="Chengdu"/>-->
+    <!--    <property name="street" value="春熙路"/>-->
+  </bean>
+
+  <!-- 2. 抽象Bean -->
+  <bean id="addr3" abstract="true">
+    <property name="city" value="Chengdu"/>
+    <property name="street" value="天府大道"/>
+  </bean>
+
+
+  <!-- 3. 依赖 -->
+  <!-- 若依赖add3抽象Bean，则此依赖不存在：抽象Bean不会被实例化 -->
+  <bean id="depend" class="A3_BeanRelation.Address" depends-on="addr2">
+    <property name="city" value="Chongqing"/>
+    <property name="street" value="HongYaDong"/>
+  </bean>
+</beans>
