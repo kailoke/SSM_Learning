@@ -1,6 +1,36 @@
-package A5_POJO;
+package A3_RequestParameters;
 
-public class User extends Address{
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+
+/** POJO封装请求体数据
+ * > Spring可直接映射请求参数至POJO对象
+ *  > SpringMVC 会按请求参数名和 POJO 属性名进行自动匹配，自动为该对象填充属性值
+ *      支持级联属性，但级联类 modifiers 必须= public
+ *  > 请求参数名需要和POJO属性名完全一致(POJO基本)
+ *
+ * 二、使用：处理方法形参中直接声明POJO对象
+ */
+
+@Controller
+public class A2_Pojo {
+    @RequestMapping("/POJO")
+    public void pojo(User user, HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+        System.out.println("pojo user info:");
+        System.out.println(user);
+
+//        req.getRequestDispatcher("WEB-INF/views/success.jsp").forward(req,res);
+        res.getWriter().write("HandlerMethod 使用 Servlet参数");
+    }
+}
+
+// POJO封装类
+class User {
     private String username;
     private String password;
     private String email;

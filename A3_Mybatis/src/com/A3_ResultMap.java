@@ -16,7 +16,23 @@ import java.io.IOException;
 import java.io.InputStream;
 
 /**
- * 自定义映射测试
+ * 一、自定义映射 结果集(resultMap)
+ *  > <id> 主键:#property封装的属性   #column返回结果的列名
+ *  > <result> 非主键映射
+ *  > <association>
+ *      > #javaType 封装的数据类型
+ *      > property封装的属性
+ *      > select 子查询结果作为映射结果
+ *      > column 子查询参数
+ *  > <collection>
+ *      > #ofType 集合内的封装数据类型
+ *
+ * 二、eagerLoad || lazyLoad
+ *  > eagerLoad(默认)
+ *      lazyLoadingEnabled:false
+ *  > lazyLoad:
+ *      aggressiveLazyLoading:true 默认全部加载
+ *                            false 默认访问时加载
  */
 public class A3_ResultMap {
     private SqlSession session = null;

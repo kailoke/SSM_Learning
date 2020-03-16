@@ -1,12 +1,9 @@
-package A5_POJO;
+package A3_RequestParameters;
 
+// 作为User类的内联属性，级联访问时 类修饰符必须=public，otherwise can not access
 public class Address {
-    public String province;
+    private String province;
     private String city;
-
-    public Address() {
-        System.out.println("abstract constructor");
-    }
 
     public String getProvince() {
         return province;

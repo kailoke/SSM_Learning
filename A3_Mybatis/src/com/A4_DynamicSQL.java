@@ -16,9 +16,8 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- *
+ * 动态SQL
  */
-
 public class A4_DynamicSQL {
     private SqlSession session = null;
     @Before

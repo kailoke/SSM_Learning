@@ -5,18 +5,24 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-/** REST风格的URL请求(方法)
+/** REST：Representational State Transfer 表现层状态转化
+ * 一、HiddenHttpMethodFilter
+ *  > 实现原理：
+ *      > 1.doFilterInternal()获取method="POST"的请求参数'_method'
+ *      > 2.内部静态类 new HttpServletRequestWrapper(request,method)保存_method，重写getMethod()返回此值
+ *  > 要点：form_method="POST" && RequestWrapper(request,_method)被过滤器增强后传递
  *
- * 一、HiddenHttpMethodFilter 增强请求方式
- *  > 实现原理：WEB过滤器，web.xml中配置，拦截请求并对获取POST请求参数_method，传递增强后的包装Request
- *             内部HttpServletRequest的内部实现子类保存_method并重写getMethod
- *  > 总结：method="POST" && _method in args
+ * 二、RequestMapping_method
+ *  > 同名且不同method的映射信息以根据不同请求方法执行对应的处理方法
  *
- * 二、Handler
- *  > Handler重载不同method的方法映射，实现URL改变服务器状态
+ * 三、操作方法
+ *  > get   |Retrieve/arg
+ *  > post  |Create
+ *  > put   |Update
+ *  > delete|Delete/arg
  *
- * 三、Tomcat权限保护
- *  > Tomcat默认WEB应用只读，需在Servlet中配置 readonly=false 开启写操作
+ * 四、Tomcat默认关闭服务器·写·操作
+ *  > Tomcat默认WEB应用只读，需要TomcatDefaultServlet配置 readonly=false
  */
 @Controller
 public class A2_REST_method {

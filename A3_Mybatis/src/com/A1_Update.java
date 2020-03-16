@@ -13,21 +13,29 @@ import java.io.IOException;
 import java.io.InputStream;
 
 /**
- * 一、SqlMapConfig.xml 全局配置文件
- * > 初始化mybatis:DataSource,Tx,Mapper
+ * 一、Sql配置文件
+ * > 1. mybatis配置信息:Properties,settings,typeAliases,environments(DataSource,Tx),Mappers...
+ * > 2. sql mapper
+ *      # namespace : mapper接口类
+ *      > 其他查询标签
  *
- * 二、mapper.xml sql映射文件
- * > <mapper namespace><select id,resultType>sql
+ * 二、传统sqlSession执行
+ * > sqlSession直接调用查询方法，传入 statement && parameters
+ *  > statement – Unique identifier matching the statement to use。全类名SqlID映射
+ *  > parameter – A parameter object to pass to the statement.
  *
  * 三、基于Mapper接口
- * > 1.绑定 Mapper接口 && sql映射文件
- * > 指定 namespace为接口全类名
- * > 2.绑定 Mapper接口方法 && sql语句
- * > select id值=方法名
- * > 3.获取Mybatis为Mapper生成的代理实现类对象
+ * > 1. 绑定 Mapper接口：指定 namespace 为接口全类名
+ * > 2. sql语句 绑定 Mapper接口方法：#id
+ * > 3. 获取Mybatis为Mapper生成的代理实现类对象
+ *
+ * 四、Mybatis执行流程
+ * > 1.创建SqlSessionFactory < Builder.build(mybatis-config.xml + mapper.xml)
+ * > 2.获取SqlSession < ↑openSession()
+ * > 3.Executor：基本执行器 || 缓存执行器
+ * > 4.MappedStatement:映射语句最终执行
  */
-
-public class A1_HelloMybatis {
+public class A1_Update {
     private SqlSessionFactory sqlSessionFactory;
     @Before
     public void init() throws IOException {
@@ -40,8 +48,6 @@ public class A1_HelloMybatis {
     // 1.传统sqlSession
     public void sqlSession() {
         try (SqlSession session = sqlSessionFactory.openSession()) {
-            // statement – Unique identifier matching the statement to use.
-            // parameter – A parameter object to pass to the statement.
             Employee employee = session.selectOne("com.mapper.A1_EmployeeMapper.selectEmployee", 6);
             System.out.println(employee);
         }

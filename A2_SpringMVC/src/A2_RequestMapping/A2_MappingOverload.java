@@ -1,14 +1,13 @@
-package A2_SpringMVCHandler;
+package A2_RequestMapping;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-/** 处理器映射器的重载测试
- * > 方法签名：方法名 + 形参列表 构成，一般形参列表使用特殊字符代替参数类型
+/** 映射的重载测试
+ * > 方法签名(signature)：方法名 + 形参列表(形参列表使用特殊字符代替参数类型)
  * > Spring会在Handler调用前解析所有方法签名，并准备相应的方法参数
  * > Spring的方法签名很宽松，基本无限制
  */
-
 @Controller
 public class A2_MappingOverload {
     @RequestMapping(path = "/overload")

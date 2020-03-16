@@ -1,4 +1,4 @@
-package A8_Json;
+package A6_Json;
 
 import org.springframework.stereotype.Repository;
 

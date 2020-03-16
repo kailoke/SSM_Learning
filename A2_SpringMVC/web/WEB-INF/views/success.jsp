@@ -9,7 +9,7 @@
 <br/>
 <br/>
 <br/>
-<h3>A6_ModelAndView TestInfo</h3>
+<h3>A5_ResponseData TestInfo</h3>
 username: ${requestScope.username}<br/>
 password: ${requestScope.password}<br/>
 loginMsg: ${requestScope.loginMsg}<br/>

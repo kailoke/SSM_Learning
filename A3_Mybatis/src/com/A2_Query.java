@@ -15,7 +15,26 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 查询数据的不同返回形式
+ * 一、自动映射 结果集(resultType)
+ *  > 核心：指定`封装数据`的类型，而不是结果的类型
+ *
+ * 二、参数传递
+ * > 1.单个参数
+ *  > sql语句可任意指定key
+ * > 2.POJO
+ *  > 类属性名和sql参数名相同时可进行自动POJO封装
+ * > 3.多个参数
+ *  > 自动Map封装，key是：paramX + [index]
+ * > 4.具名参数(namedSpace)
+ *  > @param(value)，替换自动Map中key[index]
+ * > 5.主动封装为Map
+ *  > key是Map中的key，不进行自动封装
+ * > 6.Array || Collection 也会被封装为Map
+ *     array || list/set
+ *
+ * 三、Sql语句预编译
+ *  > # ~= PreparedStatement
+ *  > $ ~= Statement
  */
 public class A2_Query {
     private SqlSessionFactory sqlSessionFactory = null;

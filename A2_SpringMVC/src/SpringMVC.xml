@@ -7,13 +7,12 @@
 
   <!-- 1.组件扫描 -->
   <context:component-scan base-package="A1_HelloWorld"/>
-  <context:component-scan base-package="A2_SpringMVCHandler"/>
-  <context:component-scan base-package="A3_RequestData"/>
+  <context:component-scan base-package="A2_RequestMapping"/>
+  <context:component-scan base-package="A3_RequestParameters"/>
   <context:component-scan base-package="A4_REST"/>
-  <context:component-scan base-package="A5_POJO"/>
-  <context:component-scan base-package="A6_ModelAndView"/>
-  <context:component-scan base-package="A7_Interceptor"/>
-  <context:component-scan base-package="A8_Json"/>
+  <context:component-scan base-package="A5_ResponseData"/>
+  <context:component-scan base-package="A6_Json"/>
+  <context:component-scan base-package="A7_HandlerInterceptor"/>
 
   <!-- 2.内部(路径)资源视图解析器-->
   <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -28,31 +27,34 @@
 
   <mvc:annotation-driven/>
   <!--  4.annotation-driven:启用Spring新组件以替换旧组件
-   一、处理器适配器的默认组件
+   1) 处理器适配器的默认组件
       > 1.HttpRequestHandlerAdapter
       > 2.SimpleControllerHandlerAdapter
       > 3.AnnotationMethodHandlerAdapter
 
-   二、view-controller || default-servlet-handler 不注册 AnnotationMethodHandlerAdapter
+   2) view-controller || default-servlet-handler 不注册 AnnotationMethodHandlerAdapter
       > annotation-driven 会注册 RequestMappingHandlerAdapter
   -->
 
   <!-- 5.拦截器 -->
   <mvc:interceptors>
-    <!-- 拦截所有请求，配置Bean或ref -->
-<!--    <bean class="A7_Interceptor.A1_Interceptor"/>-->
-    <ref bean="a1_Interceptor"/>
+    <!-- 1. 拦截所有请求，配置Bean或ref -->
+    <!--    <ref bean="A_HandlerInterceptor"/>-->
+    <!--    <bean class="A7_HandlerInterceptor.A_HandlerInterceptor2"/>-->
 
-    <!-- `过滤路径`的拦截器 -->
-<!--    <mvc:interceptor>-->
-      <!-- 指定拦截 -->
-<!--      <mvc:mapping path="/path1.."/>-->
-<!--      <mvc:exclude-mapping path="/path2.."/>-->
+    <!-- 2. `过滤路径`的拦截器 -->
+    <mvc:interceptor>
+      <mvc:mapping path="/interceptors"/>
+      <!-- 1)指定拦截的请求 -->
+      <!--      <mvc:exclude-mapping path="/path2.."/>-->
 
-      <!-- 配置Bean或ref -->
-<!--      <ref bean="a1_Interceptor"/>-->
-<!--      <bean class="A7_Interceptor.A1_Interceptor"/>-->
-<!--    </mvc:interceptor>-->
+      <!-- 2)配置拦截器Bean -->
+      <ref bean="a_HandlerInterceptor"/>
+    </mvc:interceptor>
+    <mvc:interceptor>
+      <mvc:mapping path="/interceptors"/>
+      <bean class="A7_HandlerInterceptor.A_HandlerInterceptor2"/>
+    </mvc:interceptor>
   </mvc:interceptors>
 
 </beans>

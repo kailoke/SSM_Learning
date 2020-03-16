@@ -27,6 +27,6 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>springDispatcherServlet</servlet-name>
-    <url-pattern>/</url-pattern>  <!-- / 特殊处理  /*会处理非Spring映射的Servlet -->
+    <url-pattern>/</url-pattern>  <!-- / 处理所有请求   /* 处理所有请求+jsp地址 -->
   </servlet-mapping>
 </web-app>
